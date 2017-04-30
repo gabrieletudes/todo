@@ -1,0 +1,11 @@
+{
+  "name": "root/todolist",
+  "type": "n",
+  "require": {},
+  "autoload": {
+    "psr-4": {
+      "Controller\\": "controllers/",
+      "Model\\": "models/"
+    }
+  }
+}
