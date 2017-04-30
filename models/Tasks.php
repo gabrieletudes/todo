@@ -87,12 +87,6 @@ class Tasks extends Model
             }
         }
     }
-
-    public function getUpdate()
-    {
-
-    }
-
     public function deleteTask($id)
     {
         $pdo = $this->connectDB();

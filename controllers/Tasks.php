@@ -58,6 +58,16 @@ class Tasks
 
     function getUpdate(){
         $this->checkLogin();
+        $tasks = $this->taskModel->getTasks($_SESSION['user']->id);
+        foreach ($tasks as $task){
+            $task->editable = 0;
+            if($task->task_id === $_GET['id']){
+                $task->editable = 1;
+            }
+        }
+        $this->taskModel->postUpdate($_GET['id'],'',$task->is_done);
+        $view = 'views/tasksindex.php';
+        return compact('view', 'tasks');
     }
 
     function postDelete(){

@@ -17,7 +17,7 @@ $r = $_REQUEST['r']??$route_parts[2];
 
 // Vérification que la route demandée est dans la liste des routes de l’app.
 if (!in_array($method . '/' . $a . '/' . $r, $routes)) {
-    die('Ce que vous cherchez n’est pas ici');
+    die('Ce que vous cherchez n’est pas ici'. $method .' '. $a . ' '. $r);
 }
 
 // Si la route demandée est dans la liste, on importe le controleur adéquat

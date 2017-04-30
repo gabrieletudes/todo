@@ -12,13 +12,13 @@
                             <label for="<?= $task->task_id; ?>" class="checkbox"><span class="checkbox__label fs-base"><?= $task->description; ?></span>
                             </label>
                         </p>
-                        <?php if($_GET['a'] === "postUpdate"):?>
+                        <?php if($_GET['a']=='getUpdate' && $task->editable):?>
                             <label for="description" class="textfield">
                                 <input type="text" size="40" value="<?= $task->description; ?>" name="description" title="description" id="description">
                                 <span class="textfield__label"><?= $task->description; ?></span>
                             </label>
                         <?php endif;?>
-                        <input type="hidden" name="r" value="task">
+                        <input type="hidden" name="r" value="tasks">
                         <input type="hidden" name="a" value="postUpdate">
                         <input type="hidden" name="id" value="<?= $task->task_id; ?>">
                         <button class="waves-effect waves-light btn" type="submit">Enregistrer</button>
