@@ -9,7 +9,14 @@
     <title>Document</title>
 </head>
 <nav>
-    <div id="branding" class=""><a href="index.php">Todolist</a></div>
+    <div id="branding" class="container">
+        <ul>
+            <li><a href="index.php">Todolist</a></li>
+            <?php if (isset($_SESSION['user'])):?>
+                <li><a href="index.php?r=auth&a=getLogout">Déconnexion</a></li>
+            <?php endif;?>
+        </ul>
+    </div>
 </nav>
 <body>
 <?php include $data['view']; ?>

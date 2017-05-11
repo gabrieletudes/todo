@@ -21,7 +21,7 @@ class Auth {
             );
         }
         session_destroy();
-        header('Location: http://devserv.app');
+        header('Location: http://devserv.app/todolist');
         exit;
     }
 
@@ -33,7 +33,7 @@ class Auth {
         $authmodel = new AuthModel();
         $user = $authmodel->checkUser($email, $password);
         if (!$user) {
-            header('Location: http://devserv.app/todolist/');
+            header('Location: http://devserv.app/todolist');
             exit;
         }
         $_SESSION['user'] = $user;
