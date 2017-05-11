@@ -59,34 +59,34 @@ class Tasks extends Model
                     ':task_id' => $task_id,
                     ':user_id' => $user_id
                 ]);
-                //var_dump('record added');
             } catch (\PDOException $exception) {
                 return null;
             }
         }
     }
 
-    public function postUpdate($id, $description, $is_done)
+    public function updateTask($id, $description, $is_done)
     {
         $pdo = $this->connectDB();
         if ($pdo) {
             try {
                 $pdoSt =
                     $pdo->prepare('
-                     UPDATE tasks SET ' . ($description ? 'description = :description, ' : '') . 'is_done = :is_done WHERE id = :id
+                     UPDATE tasks SET ' . ($description ? 'description = :description, ' : '') . ' is_done = :is_done WHERE id = :id
                 ');
-                $pdoSt->execute([
-                    ':id' => $id,
-                    ':description' => $description,
-                    ':is_done' => $is_done
-
-                ]);
+                $pdoSt->bindValue(':id', $id);
+                $pdoSt->bindValue(':is_done', $is_done);
+                if ($description) {
+                    $pdoSt->bindValue(':description', $description);
+                }
+                $pdoSt->execute();
                 var_dump('record updated');
             } catch (\PDOException $exception) {
                 return null;
             }
         }
     }
+
     public function deleteTask($id)
     {
         $pdo = $this->connectDB();
